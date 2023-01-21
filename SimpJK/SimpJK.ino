@@ -196,6 +196,7 @@ int SerialSlaves = 0; //number of slaves present
 int balinit = 0;
 int balon = 0;
 int balcycle = 0;
+int SetBal = 0;
 
 //Debugging modes//////////////////
 int debug = 1;
@@ -865,11 +866,19 @@ void loop()
     {
       if (balancecells == 1)
       {
-        bms.balanceCells(1, 0); //1 is debug
+        if (SetBal == 2 || SetBal == 0)
+        {
+          bms.balanceCells(1, 0); //1 is debug
+          SetBal = 1;
+        }
       }
       else
       {
-        //bms.balanceCells(0, 0); //1 is debug
+        if (SetBal == 1 || SetBal == 0)
+        {
+          bms.balanceCells(0, 0); //1 is debug
+          SetBal = 2;
+        }
       }
     }
 

@@ -421,7 +421,7 @@ void BMSModuleManager::printPackDetails(int digits)
   uint8_t alerts;
   uint8_t COV;
   uint8_t CUV;
-  int cellNum = 0;
+  int cellNum = 1;
 
   Logger::console("");
   Logger::console("");
@@ -446,6 +446,10 @@ void BMSModuleManager::printPackDetails(int digits)
       SERIALCONSOLE.print("V");
       for (int i = 0; i < 24; i++)
       {
+        if (i == 11)
+        {
+          SERIALCONSOLE.println();
+        }
         if (cellNum < 10) SERIALCONSOLE.print(" ");
         SERIALCONSOLE.print("  Cell");
         SERIALCONSOLE.print(cellNum++);
